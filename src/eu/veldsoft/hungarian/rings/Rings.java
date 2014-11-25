@@ -21,9 +21,8 @@ class Rings {
 	}
 
 	public void init(int width, int height) {
-		//TODO Debug only.
-		this.width = width = 480;
-		this.height = height = 800;
+		this.width = width;
+		this.height = height;
 
 		pdiam = (int) (Math.min(width, height) * 0.08);
 		rdiam = (int) (2.9 * pdiam);
@@ -54,15 +53,6 @@ class Rings {
 		for (int i = 9; i < 18; i++)
 			rings[1][i] = 4;
 		moves = 0;
-
-		// TODO Debug only.
-		for (int a = 0; a < 2; a++) {
-			for (int i = 0; i < 18; i++) {
-				System.err.println(a + "" + (i < 10 ? "0" : "") + "" + i + " "
-						+ rings[a][i] + " " + coordiantes[a][i][0] + " "
-						+ coordiantes[a][i][1]);
-			}
-		}
 
 		int inten;
 		double sigma = 0.5;

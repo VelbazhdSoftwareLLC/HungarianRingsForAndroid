@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="ebinqo_url">http://ebinqo.com/</string>
     <string name="app_name">Hungarian Rings for Android</string>
     <string name="title_activity_game">Hungarian Rings</string>
+    <string name="you_win">You win!</string>
+    <string name="reset_option">Reset</string>
+    <string name="shuffle_option">Shuffle</string>
+    <string name="help_option">Help</string>
+    <string name="about_option">About</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_about">About</string>
 
 </resources>
