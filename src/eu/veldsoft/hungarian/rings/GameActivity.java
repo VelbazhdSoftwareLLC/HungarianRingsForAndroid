@@ -19,6 +19,14 @@ public class GameActivity extends Activity {
 
 	private ImageView views[] = {};
 
+	MediaPlayer beep02Player = null;
+
+	MediaPlayer hit01Player = null;
+
+	private MediaPlayer cartoon007Plauyer = null;
+
+	private MediaPlayer cartoon012Player = null;
+
 	private View.OnClickListener aRingClockwiseClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View viwe) {
@@ -61,14 +69,13 @@ public class GameActivity extends Activity {
 		if (rings.isDone() == true) {
 			Toast.makeText(this, R.string.you_win, Toast.LENGTH_LONG).show();
 		}
-
 	}
 
 	private void sound() {
 		if (rings.isDone() == true) {
-			MediaPlayer.create(this, R.raw.beep_02).start();
+			beep02Player.start();
 		} else {
-			MediaPlayer.create(this, R.raw.hit_01).start();
+			hit01Player.start();
 		}
 	}
 
@@ -102,6 +109,11 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
+		beep02Player = MediaPlayer.create(this, R.raw.beep_02);
+		hit01Player = MediaPlayer.create(this, R.raw.hit_01);
+		cartoon007Plauyer = MediaPlayer.create(this, R.raw.cartoon007);
+		cartoon012Player = MediaPlayer.create(this, R.raw.cartoon012);
+		
 		ImageView views[] = { (ImageView) findViewById(R.id.imageView000),
 				(ImageView) findViewById(R.id.imageView001),
 				(ImageView) findViewById(R.id.imageView002),
@@ -206,10 +218,12 @@ public class GameActivity extends Activity {
 		switch (item.getItemId()) {
 		case R.id.reset_game:
 			rings.init(0, 0);
+			cartoon007Plauyer.start();
 			GameActivity.this.repaint();
 			break;
 		case R.id.shuffle_game:
 			rings.shuffle();
+			cartoon012Player.start();
 			GameActivity.this.repaint();
 			break;
 		case R.id.help_game:

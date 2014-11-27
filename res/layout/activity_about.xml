@@ -4,9 +4,15 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:freezesText="true"
+        android:inputType="textMultiLine"
+        android:longClickable="false"
+        android:text="@string/about_text" />
 
 </RelativeLayout>
