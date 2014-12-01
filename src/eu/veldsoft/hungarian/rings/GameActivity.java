@@ -1,11 +1,17 @@
 package eu.veldsoft.hungarian.rings;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class GameActivity extends Activity {
 
@@ -13,11 +19,19 @@ public class GameActivity extends Activity {
 
 	private ImageView views[] = {};
 
+	MediaPlayer beep02Player = null;
+
+	MediaPlayer hit01Player = null;
+
+	private MediaPlayer cartoon007Plauyer = null;
+
+	private MediaPlayer cartoon012Player = null;
+
 	private View.OnClickListener aRingClockwiseClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View viwe) {
 			rings.ccwa();
-			GameActivity.this.repaint();
+			GameActivity.this.updateInfo();
 		}
 	};
 
@@ -25,7 +39,7 @@ public class GameActivity extends Activity {
 		@Override
 		public void onClick(View viwe) {
 			rings.cwa();
-			GameActivity.this.repaint();
+			GameActivity.this.updateInfo();
 		}
 	};
 
@@ -33,7 +47,7 @@ public class GameActivity extends Activity {
 		@Override
 		public void onClick(View viwe) {
 			rings.ccwb();
-			GameActivity.this.repaint();
+			GameActivity.this.updateInfo();
 		}
 	};
 
@@ -41,9 +55,29 @@ public class GameActivity extends Activity {
 		@Override
 		public void onClick(View viwe) {
 			rings.cwb();
-			GameActivity.this.repaint();
+			GameActivity.this.updateInfo();
 		}
 	};
+
+	private void updateInfo() {
+		sound();
+		repaint();
+		congratulate();
+	}
+
+	private void congratulate() {
+		if (rings.isDone() == true) {
+			Toast.makeText(this, R.string.you_win, Toast.LENGTH_LONG).show();
+		}
+	}
+
+	private void sound() {
+		if (rings.isDone() == true) {
+			beep02Player.start();
+		} else {
+			hit01Player.start();
+		}
+	}
 
 	private void repaint() {
 		int state[] = rings.getState();
@@ -75,6 +109,11 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
+		beep02Player = MediaPlayer.create(this, R.raw.beep_02);
+		hit01Player = MediaPlayer.create(this, R.raw.hit_01);
+		cartoon007Plauyer = MediaPlayer.create(this, R.raw.cartoon007);
+		cartoon012Player = MediaPlayer.create(this, R.raw.cartoon012);
+		
 		ImageView views[] = { (ImageView) findViewById(R.id.imageView000),
 				(ImageView) findViewById(R.id.imageView001),
 				(ImageView) findViewById(R.id.imageView002),
@@ -113,27 +152,39 @@ public class GameActivity extends Activity {
 				(ImageView) findViewById(R.id.imageView117), };
 		this.views = views;
 
-		findViewById(R.id.imageView005).setOnClickListener(aRingCouterClockwiseClick);
-		findViewById(R.id.imageView006).setOnClickListener(aRingCouterClockwiseClick);
-		findViewById(R.id.imageView007).setOnClickListener(aRingCouterClockwiseClick);
-		findViewById(R.id.imageView008).setOnClickListener(aRingCouterClockwiseClick);
-		findViewById(R.id.imageView009).setOnClickListener(aRingCouterClockwiseClick);
-		findViewById(R.id.imageView010).setOnClickListener(aRingCouterClockwiseClick);
-		
+		findViewById(R.id.imageView005).setOnClickListener(
+				aRingCouterClockwiseClick);
+		findViewById(R.id.imageView006).setOnClickListener(
+				aRingCouterClockwiseClick);
+		findViewById(R.id.imageView007).setOnClickListener(
+				aRingCouterClockwiseClick);
+		findViewById(R.id.imageView008).setOnClickListener(
+				aRingCouterClockwiseClick);
+		findViewById(R.id.imageView009).setOnClickListener(
+				aRingCouterClockwiseClick);
+		findViewById(R.id.imageView010).setOnClickListener(
+				aRingCouterClockwiseClick);
+
 		findViewById(R.id.imageView012).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView013).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView014).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView015).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView016).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView017).setOnClickListener(aRingClockwiseClick);
-		
-		findViewById(R.id.imageView105).setOnClickListener(bRingCouterClockwiseClick);
-		findViewById(R.id.imageView106).setOnClickListener(bRingCouterClockwiseClick);
-		findViewById(R.id.imageView107).setOnClickListener(bRingCouterClockwiseClick);
-		findViewById(R.id.imageView108).setOnClickListener(bRingCouterClockwiseClick);
-		findViewById(R.id.imageView109).setOnClickListener(bRingCouterClockwiseClick);
-		findViewById(R.id.imageView110).setOnClickListener(bRingCouterClockwiseClick);
-		
+
+		findViewById(R.id.imageView105).setOnClickListener(
+				bRingCouterClockwiseClick);
+		findViewById(R.id.imageView106).setOnClickListener(
+				bRingCouterClockwiseClick);
+		findViewById(R.id.imageView107).setOnClickListener(
+				bRingCouterClockwiseClick);
+		findViewById(R.id.imageView108).setOnClickListener(
+				bRingCouterClockwiseClick);
+		findViewById(R.id.imageView109).setOnClickListener(
+				bRingCouterClockwiseClick);
+		findViewById(R.id.imageView110).setOnClickListener(
+				bRingCouterClockwiseClick);
+
 		findViewById(R.id.imageView112).setOnClickListener(bRingClockwiseClick);
 		findViewById(R.id.imageView113).setOnClickListener(bRingClockwiseClick);
 		findViewById(R.id.imageView114).setOnClickListener(bRingClockwiseClick);
@@ -141,7 +192,49 @@ public class GameActivity extends Activity {
 		findViewById(R.id.imageView116).setOnClickListener(bRingClockwiseClick);
 		findViewById(R.id.imageView117).setOnClickListener(bRingClockwiseClick);
 
+		((ImageView) findViewById(R.id.ebinqoLogo))
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						GameActivity.this.startActivity(new Intent(
+								Intent.ACTION_VIEW, Uri.parse(getResources()
+										.getString(R.string.ebinqo_url))));
+					}
+				});
+
 		rings = new Rings(this.getWindow().getDecorView().getWidth(), this
 				.getWindow().getDecorView().getHeight());
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.game_option_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.reset_game:
+			rings.init(0, 0);
+			cartoon007Plauyer.start();
+			GameActivity.this.repaint();
+			break;
+		case R.id.shuffle_game:
+			rings.shuffle();
+			cartoon012Player.start();
+			GameActivity.this.repaint();
+			break;
+		case R.id.help_game:
+			GameActivity.this.startActivity(new Intent(GameActivity.this,
+					HelpActivity.class));
+			break;
+		case R.id.about_game:
+			GameActivity.this.startActivity(new Intent(GameActivity.this,
+					AboutActivity.class));
+			break;
+		}
+		return true;
 	}
 }
