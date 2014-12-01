@@ -29,15 +29,15 @@ public class GameActivity extends Activity {
 
 	private View.OnClickListener aRingClockwiseClick = new View.OnClickListener() {
 		@Override
-		public void onClick(View viwe) {
+		public void onClick(View view) {
 			rings.ccwa();
 			GameActivity.this.updateInfo();
 		}
 	};
 
-	private View.OnClickListener aRingCouterClockwiseClick = new View.OnClickListener() {
+	private View.OnClickListener aRingCounterClockwiseClick = new View.OnClickListener() {
 		@Override
-		public void onClick(View viwe) {
+		public void onClick(View view) {
 			rings.cwa();
 			GameActivity.this.updateInfo();
 		}
@@ -45,15 +45,15 @@ public class GameActivity extends Activity {
 
 	private View.OnClickListener bRingClockwiseClick = new View.OnClickListener() {
 		@Override
-		public void onClick(View viwe) {
+		public void onClick(View view) {
 			rings.ccwb();
 			GameActivity.this.updateInfo();
 		}
 	};
 
-	private View.OnClickListener bRingCouterClockwiseClick = new View.OnClickListener() {
+	private View.OnClickListener bRingCounterClockwiseClick = new View.OnClickListener() {
 		@Override
-		public void onClick(View viwe) {
+		public void onClick(View view) {
 			rings.cwb();
 			GameActivity.this.updateInfo();
 		}
@@ -113,7 +113,7 @@ public class GameActivity extends Activity {
 		hit01Player = MediaPlayer.create(this, R.raw.hit_01);
 		cartoon007Plauyer = MediaPlayer.create(this, R.raw.cartoon007);
 		cartoon012Player = MediaPlayer.create(this, R.raw.cartoon012);
-		
+
 		ImageView views[] = { (ImageView) findViewById(R.id.imageView000),
 				(ImageView) findViewById(R.id.imageView001),
 				(ImageView) findViewById(R.id.imageView002),
@@ -152,18 +152,25 @@ public class GameActivity extends Activity {
 				(ImageView) findViewById(R.id.imageView117), };
 		this.views = views;
 
+		findViewById(R.id.arrow01).setOnClickListener(aRingClockwiseClick);
+		findViewById(R.id.arrow02).setOnClickListener(
+				aRingCounterClockwiseClick);
+		findViewById(R.id.arrow03).setOnClickListener(
+				bRingCounterClockwiseClick);
+		findViewById(R.id.arrow04).setOnClickListener(bRingClockwiseClick);
+
 		findViewById(R.id.imageView005).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 		findViewById(R.id.imageView006).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 		findViewById(R.id.imageView007).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 		findViewById(R.id.imageView008).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 		findViewById(R.id.imageView009).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 		findViewById(R.id.imageView010).setOnClickListener(
-				aRingCouterClockwiseClick);
+				aRingCounterClockwiseClick);
 
 		findViewById(R.id.imageView012).setOnClickListener(aRingClockwiseClick);
 		findViewById(R.id.imageView013).setOnClickListener(aRingClockwiseClick);
@@ -173,17 +180,17 @@ public class GameActivity extends Activity {
 		findViewById(R.id.imageView017).setOnClickListener(aRingClockwiseClick);
 
 		findViewById(R.id.imageView105).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 		findViewById(R.id.imageView106).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 		findViewById(R.id.imageView107).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 		findViewById(R.id.imageView108).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 		findViewById(R.id.imageView109).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 		findViewById(R.id.imageView110).setOnClickListener(
-				bRingCouterClockwiseClick);
+				bRingCounterClockwiseClick);
 
 		findViewById(R.id.imageView112).setOnClickListener(bRingClockwiseClick);
 		findViewById(R.id.imageView113).setOnClickListener(bRingClockwiseClick);
