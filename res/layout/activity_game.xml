@@ -4,7 +4,58 @@
     android:layout_height="match_parent"
     android:background="#000000"
     tools:context="${relativePackage}.${activityClass}" >
-    
+        
+    <ImageView
+        android:id="@+id/arrow01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="120dp"
+        android:maxWidth="84dp"
+        android:src="@drawable/topaclockwise" />
+        
+    <ImageView
+        android:id="@+id/arrow02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="200dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="120dp"
+        android:maxWidth="84dp"
+        android:src="@drawable/bottomaanticlockwise" />
+        
+    <ImageView
+        android:id="@+id/arrow03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="120dp"
+        android:maxWidth="84dp"
+        android:src="@drawable/topbanticlockwise" />
+        
+    <ImageView
+        android:id="@+id/arrow04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="200dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="120dp"
+        android:maxWidth="84dp"
+        android:src="@drawable/bottombclockwise" />
     
     <ImageView
         android:id="@+id/imageView000"
