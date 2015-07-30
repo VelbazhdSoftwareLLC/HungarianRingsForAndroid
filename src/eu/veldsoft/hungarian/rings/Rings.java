@@ -130,7 +130,7 @@ class Rings {
 	}
 
 	public boolean eval(String commands) {
-		for (int i = -1, rep = 0; i < commands.length();)
+		for (int i = -1, rep = 0; i < commands.length()-1;)
 			if (commands.charAt(++i) == '+') {
 				if ('0' <= commands.charAt(++i) && commands.charAt(i) <= '9')
 					rep = commands.charAt(i++) - '0';

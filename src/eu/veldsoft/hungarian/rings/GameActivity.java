@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class GameActivity extends Activity {
+	private static int FORMULA_REQUEST_ID = 1;
 
 	private Rings rings = null;
 
@@ -214,6 +215,18 @@ public class GameActivity extends Activity {
 	}
 
 	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (resultCode == RESULT_OK && requestCode == FORMULA_REQUEST_ID) {
+			String formula = data.getCharSequenceExtra(
+					InstructionActivity.EXTRA_RESULT_FORMULA_KEY).toString();
+			rings.eval(formula.toUpperCase());
+			GameActivity.this.updateInfo();
+		}
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.game_option_menu, menu);
@@ -223,6 +236,10 @@ public class GameActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case R.id.run_formula:
+			startActivityForResult(new Intent(GameActivity.this,
+					InstructionActivity.class), FORMULA_REQUEST_ID);
+			break;
 		case R.id.reset_game:
 			rings.init(0, 0);
 			cartoon007Plauyer.start();
@@ -234,12 +251,10 @@ public class GameActivity extends Activity {
 			GameActivity.this.repaint();
 			break;
 		case R.id.help_game:
-			GameActivity.this.startActivity(new Intent(GameActivity.this,
-					HelpActivity.class));
+			startActivity(new Intent(GameActivity.this, HelpActivity.class));
 			break;
 		case R.id.about_game:
-			GameActivity.this.startActivity(new Intent(GameActivity.this,
-					AboutActivity.class));
+			startActivity(new Intent(GameActivity.this, AboutActivity.class));
 			break;
 		}
 		return true;
